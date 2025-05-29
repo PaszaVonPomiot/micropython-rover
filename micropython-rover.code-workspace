@@ -1,0 +1,13 @@
+{
+    "folders": [
+        {
+            "name": "micropython-rover",
+            "path": "."
+        },
+        {
+            "name": "Pico",
+            "uri": "pico:/"
+        }
+    ],
+    "settings": {}
+}
