@@ -1,4 +1,4 @@
-"""Board configuration and pin assignment."""
+"""Board configuration."""
 
 from micropython import const
 
