@@ -1,3 +1,5 @@
+"""Sound level meter"""
+
 from config.sensors import Pin
 from machine import ADC
 
