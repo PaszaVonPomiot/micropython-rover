@@ -1,5 +1,5 @@
 from config.sensors import MicPin, MicConfig
-from core.max4466 import Mic
+from core.mic import Mic
 
 
 def mic_factory() -> Mic:
