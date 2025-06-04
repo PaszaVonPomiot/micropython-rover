@@ -1,11 +1,9 @@
 """Real Time Clock"""
 
-import machine
-from config.storage import RTCPin
-from lib.ds1302 import DS1302
+from core.factories import int_rtc_factory, ext_rtc_factory
 
-int_rtc = machine.RTC()
-ext_rtc = ext_rtc = DS1302(clk=RTCPin.CLK, dat=RTCPin.DAT, rst=RTCPin.RST)
+int_rtc = int_rtc_factory()
+ext_rtc = ext_rtc_factory()
 
 
 def sync_rtc() -> None:

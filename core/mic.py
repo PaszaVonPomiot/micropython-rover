@@ -1,7 +1,6 @@
 """Sound level meter"""
 
-from config.sensors import Pin
-from machine import ADC
+from machine import ADC, Pin
 
 
 class Mic:

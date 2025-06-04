@@ -1,13 +1,10 @@
-from machine import Pin
+"""Actuator configurations."""
 
 
-class BuzzerGPIO:
-    """Active buzzer GPIO."""
+class BuzzerConfig:
+    """Active buzzer configuration."""
 
-    PLUS = 15
-
-
-class BuzzerPin:
-    """Active buzzer Pin."""
-
-    PLUS = Pin(BuzzerGPIO.PLUS, mode=Pin.OUT, value=0)
+    GPIO_PLUS: int = 15
+    DOT_MS: int = 100
+    DASH_MS: int = 300
+    PAUSE_MS: int = 100

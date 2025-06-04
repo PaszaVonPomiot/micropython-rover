@@ -1,7 +1,7 @@
-from machine import Pin
+"""Sensor configurations."""
 
 
-class MicGPIO:
+class MicConfig:
     """
     GP26 -> A0
     GP27 -> A1
@@ -9,14 +9,7 @@ class MicGPIO:
     GP29 -> A3, only for VSYS
     """
 
-    ADC: int = 26
-
-
-class MicPin:
-    ADC: Pin = Pin(MicGPIO.ADC)
-
-
-class MicConfig:
+    GPIO_ADC: int = 26
     OUTPUT_RESOLUTION_BITS: int = 12
     RAW_INPUT_MIN: int = 26000
     RAW_INPUT_MAX: int = 58430

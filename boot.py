@@ -1,10 +1,10 @@
 import machine
-from config.board import Pico
+from config.board import PicoConfig
 from core.buzzer import Buzzer
 from config.actuators import BuzzerPin
 from core.rtc import sync_rtc
 
-machine.freq(Pico.MCU_FREQUENCY)
+machine.freq(PicoConfig.MCU_FREQUENCY)
 
 sync_rtc()
 
