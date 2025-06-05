@@ -26,10 +26,6 @@ def mic_factory() -> Mic:
     )
 
 
-def int_rtc_factory() -> RTC:
-    return RTC()
-
-
 def ext_rtc_factory() -> DS1302:
     return DS1302(
         clk=Pin(RTCConfig.GPIO_CLK),
@@ -40,7 +36,7 @@ def ext_rtc_factory() -> DS1302:
 
 def sd_factory() -> SDCard:
     spi = SPI(
-        1,
+        SDConfig.SPI_CONTROLLER,
         sck=SDConfig.GPIO_SCK,
         mosi=SDConfig.GPIO_MOSI,
         miso=SDConfig.GPIO_MISO,

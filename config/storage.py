@@ -8,6 +8,7 @@ class RTCConfig:
 
 
 class SDConfig:
+    SPI_CONTROLLER: int = 1
     GPIO_SCK: int = 10
     GPIO_MOSI: int = 11
     GPIO_MISO: int = 12

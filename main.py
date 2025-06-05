@@ -1,13 +1,13 @@
 from machine import SPI
-from config.storage import SDGPIO, SDPin
-from lib.sdcard import SDCard
+from core.factories import sd_factory
 import uos
-from core.logger import LoggerCSV
+from core.logger import (
+    LoggerCSV,
+)  # FIXME: TypeError: multiple bases have instance lay-out conflict
 
 
 def main() -> None:
-    spi = SPI(1, sck=SDGPIO.SCK, mosi=SDGPIO.MOSI, miso=SDGPIO.MISO)
-    sd = SDCard(spi=spi, cs=SDPin.CS)
+    sd = sd_factory()
     vfs = uos.VfsFat(sd)
     uos.mount(vfs, "/sd")
     print(uos.listdir("/sd"))
