@@ -2,7 +2,7 @@ import gc
 import os
 
 from config.storage import SDConfig
-from core.exceptions import LoggerInvalideRecordError, SDNotMountedError
+from core.exceptions import LoggerInvalidRecordError, SDNotMountedError
 
 
 class LoggerCSV:
@@ -92,7 +92,7 @@ class LoggerCSV:
     def _validate_record(self, record: str) -> None:
         """Validate if record does not contain newline characters"""
         if "\n" in record:
-            raise LoggerInvalideRecordError("Record cannot contain newline characters")
+            raise LoggerInvalidRecordError("Record cannot contain newline characters")
 
     def write_record_with_buffer(self, record: str) -> None:
         """
