@@ -6,7 +6,7 @@ from core.factories import ext_rtc_factory
 
 class Clock:
     """
-    Clock is composed of internal (on-board) and external Real Time Clocks.
+    Clock object is composed of internal (on-board) and external Real Time Clocks.
     Use it to sync internal RTC from external RTC and to produce timestamp.
     """
 

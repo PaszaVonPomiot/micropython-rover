@@ -1,11 +1,12 @@
-from machine import Pin, SPI, RTC
-from config.sensors import MicConfig
+from machine import Pin, SPI, I2C
+from config.sensors import AmbientSoundSensorConfig, AmbientLightSensorConfig
 from config.actuators import BuzzerConfig
 from config.storage import RTCConfig, SDConfig
 from core.buzzer import Buzzer
-from core.mic import Mic
+from core.mic import AmbientSoundSensor
 from lib.ds1302 import DS1302
 from lib.sdcard import SDCard
+from lib.bh1750 import BH1750
 
 
 def buzzer_factory() -> Buzzer:
@@ -17,12 +18,22 @@ def buzzer_factory() -> Buzzer:
     )
 
 
-def mic_factory() -> Mic:
-    return Mic(
-        adc_pin=Pin(MicConfig.GPIO_ADC),
-        output_resolution_bits=MicConfig.OUTPUT_RESOLUTION_BITS,
-        raw_input_min=MicConfig.RAW_INPUT_MIN,
-        raw_input_max=MicConfig.RAW_INPUT_MAX,
+def ambient_sound_sensor_factory() -> AmbientSoundSensor:
+    return AmbientSoundSensor(
+        adc_pin=Pin(AmbientSoundSensorConfig.GPIO_ADC),
+        output_resolution_bits=AmbientSoundSensorConfig.OUTPUT_RESOLUTION_BITS,
+        raw_input_min=AmbientSoundSensorConfig.RAW_INPUT_MIN,
+        raw_input_max=AmbientSoundSensorConfig.RAW_INPUT_MAX,
+    )
+
+
+def ambient_light_sensor_factory() -> BH1750:
+    return BH1750(
+        i2c=I2C(
+            AmbientLightSensorConfig.I2C_CONTROLLER,
+            scl=Pin(AmbientLightSensorConfig.GPIO_SCL),
+            sda=Pin(AmbientLightSensorConfig.GPIO_SDA),
+        )
     )
 
 

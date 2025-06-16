@@ -3,7 +3,7 @@
 from machine import ADC, Pin
 
 
-class Mic:
+class AmbientSoundSensor:
     def __init__(
         self,
         adc_pin: Pin,
