@@ -1,79 +1,74 @@
 # Roles
 
--   Me: an engineer that builds and codes the project.
--   You: a code assistant that follows instructions below.
+-   User: I'm an engineer developing this project.
+-   Assistant: You are a code assistant that follows instructions below.
 
-# Project
+# Project Context
 
-## Overview
+-   Summary: Planetary rover prototype for Earth exploration.
+-   Hardware: Raspberry Pi Pico (RP2040) with sensors, actuators, data storage and radio.
+-   Goals: Modular, reliable and efficient code operating within hardware constraints.
+-   Language: MicroPython 1.25.0
 
--   A planetary rover prototype for Earth exploration
--   Based on Raspberry Pi Pico (RP2024)
--   Equipped with sensors, actuators, data storage and radio
--   Powered from battery with solar charging
--   Coded in MicroPython version 1.25.0.
+# Repository Structure
 
-## Main Goals
+-   config/: Editable configuration classes.
+-   core/: Core system logic.
+-   lib/: Sensor and actuator drivers, each in a separate subfolder.
+-   utils/: Helper functions, I2C Scan, RTC setup, etc.
+-   boot.py: Startup configuration.
+-   main.py: System entry point.
 
--   Efficient, modular MicroPython code
--   Reliable operation within hardware constrains
--   Low-power operation
+# Code Instructions
 
-## Repository structure
+## Design Principles
 
-config/ # Editable configuration classes
-core/ # Core system logic
-lib/ # Sensor and actuator drivers
-utils/ # Helper functions, I2C Scan, RTC setup, etc.
-boot.py # Startup configuration
-main.py # System entry point
+-   Single Responsibility: Ensure each class/function has one clear responsibility.
+-   Liskov Substitution: Ensure subclass behavior matches base class expectations.
+-   Interface Segregation: Define narrow, focused interfaces.
+-   Dependency Inversion: Depend on abstractions and use dependency injection.
+-   EAFP: Write code that assumes valid conditions and handles exceptions if they occur.
+-   LBYL: Use pre-checks only when they clearly improve readability or safety.
 
-# Code Standards
+## Coding Style
 
-## Style
-
--   Write clean, readable, reusable and maintainable MicroPython code.
--   Follow [PEP8](https://peps.python.org/pep-0008/) style guidelines.
--   Use descriptive names for variables, functions, and classes.
--   Prefer explicit over implicit code.
--   Prefer keyword arguments for functions with parameters.
--   Prefer flat over nested code.
--   Use f-strings for string formatting.
+-   Readability: Write clear, self-explanatory code. Use meaningful variable, method, and class names.
+-   Reusability: Follow PEP8 and write clean, maintainable, reusable code.
+-   Flat Code: Prefer flat code structures over deeply nested ones.
+-   Keyword Arguments: Prefer keyword arguments for function parameters.
+-   String Formatting: Use f-strings consistently unless dealing with user input.
+-   Explicit code: Prefer explicit over implicit.
+-   Magic Numbers: Avoid using magic numbers and use named constants instead
+-   Access Modifies: Use protected identifiers to hide implementation details from user.
 
 ## Architecture & Design
 
--   Use object oriented paradigm.
--   Use async code when applicable.
--   Keep functions small and focused on a single task.
--   Avoid using global variables.
--   Use context managers (`with` statement) for resource management.
--   Assume hardware constraints (low RAM, low CPU power)
--   Use MicroPython-specific imports like `utime` and `uos` instead of `time` and `os`
+-   Paradigm: Use object-oriented programming.
+-   Async: Follow asynchronous programming patterns using the `uasyncio` module.
+-   Functions: Keep functions small and focused on a single task.
+-   Global variables: Avoid using global variables.
+-   Context managers: Prefer using `with` statement for resource management.
+-   Constraints: Assume hardware constraints (low RAM, low CPU power).
+-   Imports: Use MicroPython-specific imports like `utime`, `uos`, `uasyncio`, etc.
 
 ## Type Annotations
 
--   Use type annotations for all function parameters and return types.
--   Do not annotate local variables or class attributes unless required for clarity.
--   Use only built-in type annotations available in Python version 3.13.
--   Write code that is compliant with MyPy.
+-   Scope: Add type annotations to all function parameters and return types.
+-   Variables: Do not annotate local variables or class attributes unless required for clarity.
+-   Allowed types: Use only built-in type annotations available in Python 3.13.
+-   Typing module: Never import `typing` module.
+-   MyPy: Ensure code is compliant with MyPy.
 
 ## Exceptions
 
--   Handle exceptions explicitly instead of using bare `except`.
--   Handle exceptions gracefully.
--   Exception variable should be called `exc`.
+-   Hierarchy: Use custom exception hierarchy.
+-   Explicit: Handle exceptions explicitly instead of using bare `except`.
+-   Graceful: Handle exceptions gracefully.
+-   Variable: Exception variable should be called `exc`.
 
 ## Documentation
 
--   Add docstring with only summary line to all functions.
--   Never add docstring to `__init__` method.
--   Add inline comments only where logic is non-obvious
-
-# Coding Principles
-
--   Single Responsibility Principle - Each class or function should have one clear purpose.
--   Liskov Substitution - Subclasses must be usable in place of their base classes without breaking functionality. Avoid overriding methods in a way that changes expected behavior.
--   Interface Segregation - Prefer small, focused interfaces over large, general ones. Don’t force classes to implement unused methods.
--   Dependency Inversion - Depend on abstractions, not concrete implementations. Use dependency injection to decouple high-level logic from low-level modules.
--   Easier to Ask for Forgiveness than Permission - prefer this approach over "Look Before You Leap"
--   Look Before You Leap - use only when it improves readability and performance and race condition is not a problem
+-   Scope: Add docstring to all functions.
+-   Style: Use single-line summary-only docstrings (no body).
+-   `__init__` method: Never add docstring to `__init__` method.
+-   Inline comments: Add inline comments only where logic is non-obvious.
